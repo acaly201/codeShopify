@@ -1,210 +1,377 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "custom_banner_DKx36E": {
+      "type": "custom-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_aG9ygK": {
+          "type": "slide",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "image": "shopify://shop_images/h10-s-1.jpg",
+            "heading": "RECYCLED CAPSULE PUFFER ANORAK PARKA",
+            "button_text": "Shop Now"
           }
         },
-        "text": {
-          "type": "text",
+        "slide_bhXPm6": {
+          "type": "slide",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image": "shopify://shop_images/h10-s-2.jpg",
+            "heading": "COAT WITH FAUX FUR",
+            "button_text": "Shop Now"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "slide_aG9ygK",
+        "slide_bhXPm6"
       ],
+      "name": "Slideshow Banner",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "auto_slide": false,
+        "section_topp": 36,
+        "section_left": 52,
+        "marin_top": 8,
+        "margin_bottom": 0,
+        "text_color": "#262626"
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "featured_product_7ke7Jq": {
+      "type": "featured-product",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "text_cRiCV8": {
+          "type": "text",
           "settings": {
-            "heading": "Talk about your brand",
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_yi7KQY": {
+          "type": "title",
+          "settings": {
             "heading_size": "h1"
           }
         },
-        "text": {
-          "type": "text",
+        "price_Rnf6kJ": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_N8jwAY": {
+          "type": "variant_picker",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_cQNyK3": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "globo_product_option_app_block_UmdVtp": {
+          "type": "shopify://apps/globo-product-option/blocks/app-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
+          "settings": {}
+        },
+        "buy_buttons_DGPBz9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_CXttNh": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "text_cRiCV8",
+        "title_yi7KQY",
+        "price_Rnf6kJ",
+        "variant_picker_N8jwAY",
+        "quantity_selector_cQNyK3",
+        "globo_product_option_app_block_UmdVtp",
+        "buy_buttons_DGPBz9",
+        "share_CXttNh"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "van-trượt",
+        "color_scheme": "",
+        "secondary_background": true,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_slide1_FaLgC8": {
+      "type": "custom-slide1",
+      "blocks": {
+        "image_UW6kF8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-01.jpg",
+            "title": "CONTRAST COAT"
+          }
+        },
+        "image_r73yFb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-02.jpg",
+            "title": "BIKER JACKET WITH PADDED SHOULDER"
+          }
+        },
+        "image_EgFUhG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-03.jpg",
+            "title": "CONTRAST COAT"
+          }
+        },
+        "image_wmmFa7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-01.jpg",
+            "title": "BIKER JACKET WITH PADDED SHOULDER"
+          }
+        }
+      },
+      "block_order": [
+        "image_UW6kF8",
+        "image_r73yFb",
+        "image_EgFUhG",
+        "image_wmmFa7"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "quantity_slide": 3,
+        "marin_top": 32,
+        "margin_bottom": 0,
+        "text_color": "#ffffff"
+      }
+    },
+    "custom_title_section_FbAhKy": {
+      "type": "custom-title-section",
+      "name": "Custom Title Section",
+      "settings": {
+        "title": "NEW ARRIVAL",
+        "backgroud_color": "#ffffff",
+        "text_color": "#000000",
+        "position_title": "center",
+        "margin_top": 40,
+        "margin_bottom": 40
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
         "collection": "all",
         "products_to_show": 8,
+        "title": "Featured products",
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
+        "enable_desktop_slider": false,
         "full_width": false,
         "color_scheme": "scheme-1",
-        "padding_top": 36,
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 52
+      }
+    },
+    "custom_image_section_LxFB6V": {
+      "type": "custom-image-section",
+      "name": "Custom image section",
+      "settings": {
+        "background_image": "shopify://shop_images/home-10-banner-mobile-02_1920x.progressive_d4265d81-5db2-484b-b75f-ec4b5c99ec80.webp",
+        "heading_text": "CABLE - KNIT                                             \nNEW ARRIVAL",
+        "text_color": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "custom_title_section_egh4J7": {
+      "type": "custom-title-section",
+      "name": "Custom Title Section",
+      "settings": {
+        "title": "TOP SALE",
+        "backgroud_color": "#ffffff",
+        "text_color": "#000000",
+        "position_title": "center",
+        "margin_top": 45,
+        "margin_bottom": 0
+      }
+    },
+    "custom_slide_product_fEmX8c": {
+      "type": "custom-slide-product",
+      "settings": {
+        "auto_slide": true,
+        "show_secondary_image": true,
+        "number_of_items_custom": 8,
+        "number_items_slide": 4,
+        "parent_box_color_scheme": "",
+        "menu_box_color_scheme": "scheme-1",
+        "margin_top": 35,
+        "margin_bottom": 40
+      }
+    },
+    "custom_image_section_j6DUCL": {
+      "type": "custom-image-section",
+      "name": "Custom image section",
+      "settings": {
+        "background_image": "shopify://shop_images/home-10-banner-mobile_1920x.progressive_d119f7cb-0ab3-408a-bb56-79f6b6b4a334.webp",
+        "heading_text": "OVERSIZED HIGH NECK SWEATER NEW ARRIVAL",
+        "text_color": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "custom_title_section_mapWdA": {
+      "type": "custom-title-section",
+      "name": "Custom Title Section",
+      "settings": {
+        "title": "LATEST BLOG",
+        "backgroud_color": "#ffffff",
+        "text_color": "#000000",
+        "position_title": "center",
+        "margin_top": 40,
+        "margin_bottom": 0
+      }
+    },
+    "featured_blog_EeNHCf": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "heading": "",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": true,
+        "color_scheme": "",
+        "padding_top": 32,
         "padding_bottom": 36
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
+    "rich_text_f9GaG8": {
+      "type": "rich-text",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "heading_hkF8K8": {
+          "type": "heading",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "heading": "SIGN UP & SAVE",
+            "heading_size": "h1"
           }
         },
-        "column2": {
-          "type": "column",
+        "text_cjbnei": {
+          "type": "text",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "text": "<p>Sale up to 20% off for your next purchase in this month!<br/><br/></p>"
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "heading_hkF8K8",
+        "text_cjbnei"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 16
+      }
+    },
+    "newsletter_MkFGG4": {
+      "type": "newsletter",
+      "blocks": {
+        "email_form_fwRHrc": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "email_form_fwRHrc"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_discount_section_3XdGfR": {
+      "type": "custom-discount-section",
+      "blocks": {
+        "benefit_ieUK8r": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/h2-icon-1_62x62_4562bb24-3341-41b1-83e7-c53b4b79bffe.webp",
+            "title": "Freeship Worldwide",
+            "description": "Aliquam posuere arcu eget interdum"
+          }
+        },
+        "benefit_9jYiQz": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/h2-icon-2_62x62_d223907a-42ce-4dea-b1b0-36d8d0383715.png",
+            "title": "Special Offer",
+            "description": "Aliquam posuere arcu eget interdum"
+          }
+        },
+        "benefit_XcQbhX": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/h2-icon-3_62x62_b20cfa7f-1c11-48d5-a397-fc09451dc797.png",
+            "title": "Order Protection",
+            "description": "Aliquam posuere arcu eget interdum"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_ieUK8r",
+        "benefit_9jYiQz",
+        "benefit_XcQbhX"
+      ],
+      "settings": {
+        "parent_box_color_scheme": "scheme-1",
+        "menu_box_color_scheme": "scheme-1",
+        "margin_top": 0,
+        "margin_bottom": 50
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
+    "custom_banner_DKx36E",
+    "featured_product_7ke7Jq",
+    "custom_slide1_FaLgC8",
+    "custom_title_section_FbAhKy",
     "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "custom_image_section_LxFB6V",
+    "custom_title_section_egh4J7",
+    "custom_slide_product_fEmX8c",
+    "custom_image_section_j6DUCL",
+    "custom_title_section_mapWdA",
+    "featured_blog_EeNHCf",
+    "rich_text_f9GaG8",
+    "newsletter_MkFGG4",
+    "custom_discount_section_3XdGfR"
   ]
 }

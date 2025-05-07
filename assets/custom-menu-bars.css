@@ -1,0 +1,71 @@
+.tab-menu-bars-custom {
+    position: fixed;
+    width: 31%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background-color: white;
+    overflow: hidden;
+    z-index: 103;
+    padding: 1.5% 3.5%;
+    transition: 0.5s;
+    display:flex;
+    flex-direction: column;
+  }
+  .tab-menu-bars-custom img {
+    width: 80%;
+    height: auto;
+    margin-top:15%;
+  }
+  .tab-menu-bars-custom>button {
+    display: block;
+    float: right;
+    margin-bottom: 20px;
+    border: none;
+    background-color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    
+  }
+  .tab-menu-bars-custom button:hover {
+    color: red;
+  }
+  .contact-menu-bars-custom {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8vh;
+  }
+  .tab-menu-bars-custom span:hover {
+    color: red;
+    cursor: pointer;
+  }
+  .box-icon-menu-bars-custom {
+    margin-top: 10px;
+  }
+  .box-icon-menu-bars-custom span {
+    text-decoration: underline;
+  }
+  .icons-menu-bars-custom {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .icon-menu-bars-custom {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+  .icon-menu-bars-custom:hover {
+    color: red;
+    border-color: red;
+    cursor: pointer;
+  }

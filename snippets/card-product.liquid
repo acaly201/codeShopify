@@ -20,6 +20,152 @@
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
+<style>
+  .custom-productt {
+    position: absolute;
+    z-index: 10;
+    width: 3vw;
+    height: 3vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: 35%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+  }
+  .custom-productt:hover {
+    background-color: #fc4f4f;
+    color: white;
+  }
+  .custom-productt:hover::before {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    padding: 3px 8px;
+    top: -60%;
+    background-color: black;
+    left: auto;
+    font-size: 1rem;
+  }
+  .custom-productt-icon-view:hover::before {
+    content: 'Quick view';
+  }
+  .custom-productt-icon-heart:hover::before {
+    content: 'Added to wishlist';
+  }
+  .custom-productt-icon-arrows:hover::before {
+    content: 'Add to compare';
+  }
+  .custom-productt-icon-cart:hover::before {
+    content: 'Add to cart';
+  }
+  .custom-productt-icon-view {
+    left: 6vw;
+  }
+  .custom-productt-icon-heart {
+    left: 10vw;
+  }
+  .custom-productt-icon-arrows {
+    left: 14vw;
+  }
+  .custom-productt-icon-cart {
+    left: 15vw;
+  }
+
+  .card-wrapper:hover .custom-productt-icon-view {
+    animation: showBox1 0.3s forwards;
+  }
+  .card-wrapper:hover .custom-productt-icon-heart {
+    animation: showBox2 0.3s forwards;
+    animation-delay: 0.2s;
+  }
+  .card-wrapper:hover .custom-productt-icon-arrows {
+    animation: showBox3 0.3s forwards;
+    animation-delay: 0.3s;
+  }
+  .card-wrapper:hover .custom-productt-icon-cart {
+    animation: showBox4 0.3s forwards;
+    animation-delay: 0.5s;
+  }
+
+  .card-wrapper:not(:hover) .custom-productt {
+    animation: hideBox 0.2s forwards;
+    -webkit-animation: hideBox 0.2s forwards;
+  }
+  @keyframes showBox1 {
+    to {
+      opacity: 1;
+      left: 10%;
+    }
+  }
+  @keyframes showBox2 {
+    to {
+      opacity: 1;
+      left: 32%;
+    }
+  }
+  @keyframes showBox3 {
+    to {
+      opacity: 1;
+      left: 54%;
+    }
+  }
+  @keyframes showBox4 {
+    to {
+      opacity: 1;
+      left: 76%;
+    }
+  }
+  @keyframes hideBox {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    .product-grid .grid__item {
+      width: 32% !important;
+    }
+    .grid {
+      justify-content: unset !important;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .product-grid .grid__item {
+      width: 48% !important;
+    }
+    .grid {
+      justify-content: space-between !important;
+    }
+    .custom-productt {
+      width: 6vw;
+      height: 6vw;
+    }
+  }
+  @media screen and (max-width: 460px){
+    .product-grid .grid__item {
+      width: 100% !important;
+    }
+    .custom-productt {
+      width: 15vw;
+      height: 15vw;
+    }
+  }
+</style>
+
 {%- unless skip_styles -%}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
@@ -40,7 +186,35 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  {%- assign product_form_idd = 'product-form-' | append: card_product.id -%}
+  <div class=" card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      onclick="{{showElementt}}('{{ card_product.featured_image | image_url }}','{{ card_product.title }}','{{ card_product.price | divided_by: 1 | money_without_currency }}','{{ card_product.description }}','buy-buttons-{{ card_product.id }}','{{ card_product.selected_or_first_available_variant.quantity_rule.min }}','{{ card_product.selected_or_first_available_variant.quantity_rule.max }}','{{ card_product.selected_or_first_available_variant.quantity_rule.increment }}','{{ card_product.images[1] | image_url}}','{{ card_product.selected_or_first_available_variant.id }}')"
+      class="custom-productt custom-productt-icon-view"
+    >
+      <i class="fas fa-eye"></i>
+    </div>
+    <div class="custom-productt custom-productt-icon-heart"><i class="fas fa-heart"></i></div>
+    <div
+      onclick="{{ addCompare }}('{{ card_product.featured_image | image_url }}','{{ card_product.title }}','{{ card_product.price | divided_by: 1 | money_without_currency }}','{{ card_product.id }}','{{ card_product.selected_or_first_available_variant.id }}')"
+      class="custom-productt custom-productt-icon-arrows"
+    >
+      <i class="fas fa-arrows-left-right"></i>
+    </div>
+    <div
+      onclick="{{ addProduct }}('{{ card_product.selected_or_first_available_variant.id }}',1)"
+      class="custom-productt custom-productt-icon-cart"
+    >
+      <i class="fas fa-cart-shopping"></i>
+    </div>
+    <div id="buy-buttons-{{ card_product.id }}" style="display: none">
+      {%- render 'buy-buttons',
+        product: card_product,
+        product_form_id: product_form_idd,
+        section_id: section.id,
+        show_pickup_availability: true
+      -%}
+    </div>
     <div
       class="
         card card--{{ settings.card_style }}
@@ -106,7 +280,7 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="card__content">
+        <div class="card__content" style="padding:0px;">
           <div class="card__information">
             <h3
               class="card__heading"
@@ -132,12 +306,21 @@
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            {%- elsif card_product.tags contains 'New' and card_product.available -%}
               <span
+                style="background-color: #a3bc60;"
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
-                {{- 'products.product.on_sale' | t -}}
+                New
+              </span>
+            {%- elsif card_product.tags contains 'Hot' and card_product.available -%}
+              <span
+                style="background-color: red;"
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+              >
+                Hot
               </span>
             {%- endif -%}
           </div>

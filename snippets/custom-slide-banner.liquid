@@ -1,0 +1,72 @@
+{{ 'custom-slide-banner.css' | asset_url | stylesheet_tag }}
+<div class="box">
+  <div class="snipper-slide-product">
+    <div class="box-product">
+      <img
+        src="https://globo-toro.myshopify.com/cdn/shop/files/home10-banner-01.jpg"
+        alt=""
+        width="100%"
+        height="100%"
+      >
+      <div class="content"><h2>CONTRAST COAT</h2></div>
+      <div class="animation">&nbsp;</div>
+    </div>
+    <div class="box-product">
+      <img
+        src="https://globo-toro.myshopify.com/cdn/shop/files/home10-banner-02.jpg"
+        alt=""
+        width="100%"
+        height="100%"
+      >
+      <div class="content"><h2>BIKER JACKET WITH PADDED SHOULDER</h2></div>
+      <div class="animation">&nbsp;</div>
+    </div>
+    <div class="box-product">
+      <img
+        src="https://globo-toro.myshopify.com/cdn/shop/files/home10-banner-03.jpg"
+        alt=""
+        width="100%"
+        height="100%"
+      >
+      <div class="content"><h2>CONTRAST COAT</h2></div>
+      <div class="animation">&nbsp;</div>
+    </div>
+    <div class="box-product">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0913/6291/8769/files/theme_cover_image.jpg?v=1744595103"
+        alt=""
+        width="100%"
+        height="100%"
+      >
+      <div class="content"><h2>BIKER JACKET WITH PADDED SHOULDER</h2></div>
+      <div class="animation">&nbsp;</div>
+    </div>
+  </div>
+  <div class="show-slide">
+    <div class="prev1 active">&nbsp;</div>
+    <div class="next1">&nbsp;</div>
+  </div>
+</div>
+<script>
+  const slide = document.querySelector('.snipper-slide-product');
+  const prev = document.querySelector('.prev1');
+  const next = document.querySelector('.next1');
+  prev.addEventListener('click', () => {
+    if (prev.classList.contains('active')) {
+      return;
+    } else {
+      slide.style.transform = `translateX(0px)`;
+      prev.classList.add('active');
+      next.classList.remove('active');
+    }
+  });
+  next.addEventListener('click', () => {
+    if (next.classList.contains('active')) {
+      return;
+    } else {
+      slide.style.transform = `translateX(-27vw)`;
+      next.classList.add('active');
+      prev.classList.remove('active');
+    }
+  });
+</script>

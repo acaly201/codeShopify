@@ -1,0 +1,24 @@
+.benefit-item {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    justify-content: center;
+  }
+  .benefit-icon {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+  }
+  .benefit-content h5 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+  }
+  .benefit-content p {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+  }

@@ -36,13 +36,19 @@
         <span class="product-form__error-message"></span>
       </div>
 
-      {%- form 'product',
+      {%-
+        form 'product',
         product,
         id: product_form_id,
         class: 'form',
         novalidate: 'novalidate',
         data-type: 'add-to-cart-form'
       -%}
+        <div
+    class="gpo-container"
+    data-product-id="{{ product.id }}"
+    data-section-id="{{ section.id }}"
+  ></div>
         <input
           type="hidden"
           name="id"

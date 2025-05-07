@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 750px) {
   .newsletter-form {
-    align-items: flex-start;
+    
     margin: 0 auto;
     max-width: 36rem;
   }
@@ -21,8 +21,25 @@
 
 .newsletter-form__field-wrapper .field__input {
   padding-right: 5rem;
-}
+  padding-bottom: 2rem;
+  color: #777;
+  font-size: 2rem;
+  outline: none !important;
 
+  box-shadow: none !important;
+  border-bottom: 1px solid #777;
+}
+.field__input:focus {
+  outline: none !important;
+ 
+  box-shadow: none !important;
+  border-bottom: 1px solid #777;
+}
+.field__input::placeholder {
+  color: #999;
+  opacity: 1;
+  
+}
 .newsletter-form__field-wrapper .field {
   z-index: 0;
 }
@@ -43,12 +60,17 @@
 }
 
 .newsletter-form__button {
-  width: 4.4rem;
+  width: max-content;
   margin: 0;
   right: var(--inputs-border-width);
   top: 0;
   height: 100%;
   z-index: 2;
+  font-size: 2rem;
+  color: #777;
+}
+.newsletter-form__button:hover {
+  color: red;
 }
 
 .newsletter-form__button:focus-visible {

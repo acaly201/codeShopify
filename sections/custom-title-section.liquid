@@ -1,0 +1,116 @@
+<style>
+  .custom-title-list-products {
+    display: flex;
+    align-items: center;
+    justify-content: {{ section.settings.position_title }};
+    margin: {{ section.settings.margin_top }}px 0px {{ section.settings.margin_bottom }}px 0px;
+    position: relative;
+  }
+
+  .custom-title-list-products span {
+    display: inline-block;
+    padding: 10px 50px;
+    font-size: 20px;
+    font-weight:400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:{{ section.settings.text_color }};
+    background-color: {{ section.settings.backgroud_color }};
+    z-index: 1;
+    border: 1px solid #e0e0e0;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+  }
+
+  .custom-title-list-products::before {
+    content: '';
+    width: {% if section.settings.position_title == 'left' %}0vw {% else %} 5vw {% endif %};
+    height: 2px;
+    background-color: #e0e0e0;
+  }
+  .custom-title-list-products::after {
+    content: '';
+    width: {% if section.settings.position_title == 'right' %}0vw {% else %} 5vw {% endif %};
+    height: 2px;
+    background-color: #e0e0e0;
+  }
+  @media screen and (max-width: 468px){
+    .custom-title-list-products span {
+      padding: 10px 30px;
+   
+    }
+
+    .custom-title-list-products::before {
+      width: 0px;
+    }
+    .custom-title-list-products::after {
+      width: 0px;
+    }
+  }
+</style>
+<div class="custom-title-list-products">
+  <span>{{ section.settings.title }}</span>
+</div>
+{% schema %}
+{
+  "name": "Custom Title Section",
+  "tag": "section",
+  "class": "section-new-title",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tiêu đề",
+      "default": "NEW ARRIVAL"
+    },
+    {
+      "type": "color",
+      "id": "backgroud_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "position_title",
+      "label": "Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Title Section"
+    }
+  ]
+}
+{% endschema %}

@@ -2,12 +2,14 @@
   .collection .grid__item:only-child {
     flex: 0 0 100%;
     max-width: 100%;
+   
   }
 }
 
 @media screen and (max-width: 989px) {
   .collection .slider.slider--tablet {
     margin-bottom: 1.5rem;
+
   }
 }
 
@@ -15,6 +17,7 @@
   position: absolute;
   z-index: 1;
   width: 1.8rem;
+  
 }
 
 @media screen and (max-width: 749px) {

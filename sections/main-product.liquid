@@ -71,7 +71,19 @@
       onload="this.media='all'"
     >
   {%- endif -%}
-
+  <style>
+    .colors-product {
+      width: 100%;
+      height: max-content;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .select_color {
+      width: 15%;
+      height: 20px;
+    }
+  </style>
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
@@ -191,6 +203,7 @@
                     {%- endif -%}
                   {%- endif -%}
                 </p>
+
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
@@ -261,7 +274,7 @@
                         </span>
                       </button>
                       <input
-                        class="quantity__input"
+                        class="quantity__input quantity__inputtt"
                         type="number"
                         name="quantity"
                         id="Quantity-{{ section.id }}"
@@ -356,7 +369,10 @@
                                 </dt>
                                 <dd>
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 </dd>
                               </dl>
@@ -370,6 +386,7 @@
                       </price-per-item>
                     {%- endif -%}
                   </div>
+
                   <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
                     {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                       <span class="divider">
@@ -396,6 +413,7 @@
                       </span>
                     {%- endif -%}
                   </div>
+
                   {%- if product.quantity_price_breaks_configured? -%}
                     <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
                       {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
@@ -662,6 +680,13 @@
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
           {%- endfor -%}
+          <div class="colors-product">
+            {% for block in section.blocks %}
+              {% if block.type == 'select_color' %}
+                <div style="background-color: {{ block.settings.bg_color }}" class="select_color"></div>
+              {% endif %}
+            {% endfor %}
+          </div>
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
             {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -732,6 +757,18 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "select_color",
+      "name": "chọn màu",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Chọn màu",
+          "default": "#3498db"
+        }
+      ]
     },
     {
       "type": "text",
@@ -1674,7 +1711,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_2.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_2",
@@ -1874,7 +1911,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_3.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_3",
@@ -2176,7 +2213,7 @@
       ],
       "default": "hide",
       "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-    },    
+    },
     {
       "type": "select",
       "id": "media_position",

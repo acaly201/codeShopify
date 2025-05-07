@@ -1,0 +1,44 @@
+{%- if block.settings.image -%}
+    {%- liquid
+      assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+      assign image_url = block.settings.image | image_url: width: 3840
+    -%}
+  
+    <div
+      class="swiper-slide slide lazy-background"
+      data-background-image="{{ image_url }}"
+      style="background-size: cover; background-position: center; background-repeat: no-repeat; min-height: {{ height }}px;"
+    >
+      <div class="slide-content">
+        <h2>{{ block.settings.heading }}</h2>
+        {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_link }}" class="slide-btn slide-button">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  
+  {%- else -%}
+    {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+    <div
+      class="swiper-slide slide"
+      style="background-color: #f2f2f2; background-size: cover; background-position: center; min-height: 670px;"
+    >
+      <div class="slide-content">
+        <h2>{{ block.settings.heading }}</h2>
+        {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_link }}" class="slide-btn slide-button">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+  
+      {%- if placeholder_slide == 1 -%}
+        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- else -%}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  

@@ -1,0 +1,22 @@
+
+ 
+  .custom-slide-product .card__inner {
+    height: auto;
+  }
+  .swiper-slide img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: red !important;
+  }
+  .swiper-pagination {
+   width:max-content;
+    height:max-content;
+    position: static;
+  }
+  .swiper-pagination span {
+    width:14px;
+    height:14px;
+  }

@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page-custom",
+      "settings": {}
+    },
+    "custom_banner_GTxXtg": {
+      "type": "custom-banner",
+      "blocks": {
+        "slide_EFr8pL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/h10-s-1.jpg",
+            "heading": "RECYCLED CAPSULE PUFFER ANORAK PARKA",
+            "button_text": "Shop Now"
+          }
+        },
+        "slide_UEz83B": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/h10-s-2.jpg",
+            "heading": "COAT WITH FAUX FUR COLLAR",
+            "button_text": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "slide_EFr8pL",
+        "slide_UEz83B"
+      ],
+      "custom_css": [
+        "div {margin-bottom: 20px;}"
+      ],
+      "name": "Slideshow Banner",
+      "settings": {}
+    },
+    "custom_slide1_KDmMRW": {
+      "type": "custom-slide1",
+      "blocks": {
+        "image_4TkF8y": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-01.jpg",
+            "title": "CONTRAST COAT"
+          }
+        },
+        "image_p63qPq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-02.jpg",
+            "title": "BIKER JACKET WITH PADDED SHOULDER"
+          }
+        },
+        "image_zi7mdf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-03.jpg",
+            "title": "CONTRAST COAT"
+          }
+        },
+        "image_KAkaEV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home10-banner-01.jpg",
+            "title": "BIKER JACKET WITH PADDED SHOULDER"
+          }
+        }
+      },
+      "block_order": [
+        "image_4TkF8y",
+        "image_p63qPq",
+        "image_zi7mdf",
+        "image_KAkaEV"
+      ],
+      "name": "Custom Slide",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "custom_banner_GTxXtg",
+    "custom_slide1_KDmMRW"
+  ]
+}

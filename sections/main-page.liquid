@@ -1,25 +1,69 @@
 {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
-
+<script src="{{ 'test.js' | asset_url }}" defer></script>
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
+
+    @media screen and (min-width: 750px) {
+      .list-blogs {
+    width: 100%;
+
+    padding: 10px;
+
+    gap: 10px;
+
   }
+  .blog {
+    width: 100%;
+    
+    padding: 10px;
+
+  }
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
 {%- endstyle -%}
 
+{% javascript %}
+{% endjavascript %}
 <div class="page-width page-width--narrow section-{{ section.id }}-padding">
   <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ page.title | escape }}
   </h1>
+
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {{ page.content }}
+  </div>
+</div>
+<div class="list-blogs">
+  {% for block in section.blocks %}
+    {% if block.type == 'blog' %}
+      <div class="blog">
+        <h2 class="title-blog">{{ block.settings.title }}</h2>
+        <p class="content-blog">- {{ block.settings.content }}</p>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<div class="color-options" style="flex: 1;">
+  <h2>Chọn màu</h2>
+  <h2 class="select-color"></h2>
+  <div style="display: flex; flex-wrap: wrap;">
+    {% for block in section.blocks %}
+      {% if block.type == 'color_option' %}
+        <div
+          data-color="{{ block.settings.color }}"
+          class="color-boxgg"
+          style="width: 40px; height: 40px;display:'block' !impor; background-color: {{ block.settings.color }}; border: 1px solid #ccc; margin: 5px;"
+        >
+          &nbsp;
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
@@ -52,6 +96,57 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blog",
+      "name": "Blog",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tiêu đề"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Nội dung"
+        }
+      ]
+    },
+    {
+      "type": "color_option",
+      "name": "Chọn màu",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Chọn màu"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Custom Blog",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "blog",
+          "settings": {
+            "title": "Bài viết mẫu",
+            "content": "Đây là nội dung mẫu của bài viết đầu tiên."
+          }
+        },
+        {
+          "type": "color_option",
+          "settings": {
+            "color": "#ff0000"
+          }
+        }
+      ]
     }
   ]
 }

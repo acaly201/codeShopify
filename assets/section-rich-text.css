@@ -51,7 +51,7 @@
 }
 
 .rich-text__blocks > * + * {
-  margin-top: 2rem;
+ 
 }
 
 .rich-text__blocks > * + a {

@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.json",
+  "context": {
+    "market": "vn"
+  },
+  "sections": {
+    "featured_collection_33Erj": {
+      "type": "featured-collection",
+      "disabled": false,
+      "settings": {
+        "collection": "",
+        "products_to_show": 4,
+        "header-878fc33b0a02e8d4134607defc36b781": null,
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "header-cc4bc65ac6ec1f81913f116b7d622869": null,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "header-2f5261575c7d95ffa4e0b724bec455df": null,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "header-7a99b0e3e8240a97e9d1f197d48b9ade": null,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "header-c03129b24f35a65eb2ee36f5658d2d3f": null,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "main",
+    "featured_collection_33Erj",
+    "related-products"
+  ]
+}

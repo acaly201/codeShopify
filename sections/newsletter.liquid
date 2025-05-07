@@ -2,17 +2,42 @@
 {{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+    @media screen and (max-width: 468px){
+      .newsletter__wrapper {
+          padding-right: 0;
+          padding-left: 0;
+      }
+      .newsletter-form {
+          margin: 0;
+          max-width: 100%;
+      }
+      .newsletter__wrapper .newsletter-form__field-wrapper {
+      max-width: 100%;
   }
+  .newsletter-form__field-wrapper {
+      width: 100% !important;
+  }
+  .newsletter-form__field-wrapper .field__input {
+      padding-right: 0rem;
+      padding-bottom: 2rem;
+
+      font-size: 1.5rem;
+
+  }
+  .newsletter-form__button {
+      font-size: 1rem;
+  }
+    }
 {%- endstyle -%}
 
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
@@ -46,7 +71,7 @@
         {%- when 'email_form' -%}
           <div {{ block.shopify_attributes }}>
             {% form 'customer', class: 'newsletter-form' %}
-              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input placeholder="Your email address" type="hidden" name="contact[tags]" value="newsletter">
               <div
                 class="newsletter-form__field-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {% if settings.animations_reveal_on_scroll %}
@@ -60,6 +85,7 @@
                     type="email"
                     name="contact[email]"
                     class="field__input"
+                    placeholder="Your email address..."
                     value="{{ form.email }}"
                     aria-required="true"
                     autocorrect="off"
@@ -72,12 +98,10 @@
                     {% elsif form.posted_successfully? %}
                       aria-describedby="Newsletter-success--{{ section.id }}"
                     {% endif %}
-                    placeholder="{{ 'newsletter.label' | t }}"
+
                     required
                   >
-                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                    {{ 'newsletter.label' | t }}
-                  </label>
+
                   <button
                     type="submit"
                     class="newsletter-form__button field__button"
@@ -85,9 +109,7 @@
                     id="Subscribe"
                     aria-label="{{ 'newsletter.button_label' | t }}"
                   >
-                    <span class="svg-wrapper">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
+                    SUBSCRIBE
                   </button>
                 </div>
                 {%- if form.errors -%}
@@ -138,12 +160,6 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "default": true,
-      "label": "t:sections.newsletter.settings.full_width.label"
     },
     {
       "type": "header",

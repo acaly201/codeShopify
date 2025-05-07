@@ -1,0 +1,21 @@
+{{ 'custom-tab-cart.css' | asset_url | stylesheet_tag }}
+<style>
+  
+</style>
+<div class="custom-menu-cart">
+  <button class="close-tab-menu-cart">X</button>
+  <h3>Shopping Cart</h3>
+
+  <div class="custom-box-cart">
+    <div class="custom-items-cart"></div>
+
+    <div style="display: none;" class="custom-total-cart">
+      <span>Subtotal</span>
+      <p id="cart-total">{{ cart.total_price | money }}</p>
+    </div>
+    <button style="display: none;" class="custom-view-cart"><a href="/cart">VIEW CART</a></button>
+    <button style="display: none;" class="custom-check-out">CHECK OUT</button>
+  </div>
+
+  <p class="zero-cart" style="display: block;">Your cart is currently empty.</p>
+</div>

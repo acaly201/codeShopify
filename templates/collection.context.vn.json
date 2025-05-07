@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "collection.json",
+  "context": {
+    "market": "vn"
+  },
+  "sections": {
+    "banner": {
+      "settings": {
+        "show_collection_image": false,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {}
+    },
+    "collection_list_xiEKA": {
+      "type": "collection-list",
+      "disabled": false,
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "header-1fe18c62a702bde348abcb9dbf54c838": null,
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "header-441918b23e3e3bbbc4d6f9038e11943c": null,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "header-6873b60e0c17d86dc11cc7aebd320d76": null,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {
+        "featured_collection_Ng6KM": {
+          "type": "featured_collection",
+          "disabled": false,
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_4yqQw": {
+          "type": "featured_collection",
+          "disabled": false,
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_fq8Pj": {
+          "type": "featured_collection",
+          "disabled": false,
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Ng6KM",
+        "featured_collection_4yqQw",
+        "featured_collection_fq8Pj"
+      ]
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_xiEKA"
+  ]
+}

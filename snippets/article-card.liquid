@@ -15,7 +15,55 @@
   Usage:
   {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
 {% endcomment %}
+{% style %}
+  .abcbb {
+    font-weight: 600;
 
+    text-transform: capitalize;
+    font-family: 'Alegreya', Sans-serif;
+    font-style: normal;
+    font-size: 32px;
+    margin: 0 0 15px;
+    line-height: 1.2;
+
+    letter-spacing: 0px;
+  }
+  .abcbb a {
+    text-transform: capitalize;
+    
+  }
+  .article-card .card__content {
+    text-align: start !important;
+  }
+  .blog__posts .article-card .card__information {
+    padding-left: 0;
+    padding-right: 0;
+}
+.article-card__excerpt {
+  line-height: 1.8;
+    margin-bottom: 15px;
+    color: #777;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    width:90%;
+}
+.rte-width  {
+  margin-left:0;
+}
+.article-card__info span {
+  font-size:12px;
+  color: #777;
+}
+.custom-button-readmore {
+  font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #262626;
+}
+{% endstyle %}
 {%- if article and article != empty -%}
   {%- liquid
     assign ratio = 1
@@ -73,9 +121,9 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="card__content">
+        <div class="card__content card__contentt">
           <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+            <h3 style="letter-spacing:0px" class="card__heading{% if show_excerpt %} h2{% endif %}">
               <a href="{{ article.url }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
               </a>
@@ -114,17 +162,17 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+          <h3 class="card__heading{% if show_excerpt %} h2{% endif %} abcbb">
             <a href="{{ article.url }}" class="full-unstyled-link">
               {{ article.title | truncate: 50 | escape }}
             </a>
           </h3>
           <div class="article-card__info caption-with-letter-spacing h5">
+            {%- if show_author -%}
+              <span>by {{ article.author }}, </span>
+            {%- endif -%}
             {%- if show_date -%}
               <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-            {%- endif -%}
-            {%- if show_author -%}
-              <span>{{ article.author }}</span>
             {%- endif -%}
           </div>
           {%- if show_excerpt -%}
@@ -150,6 +198,7 @@
           </div>
         {%- endif -%}
       </div>
+      <button class="custom-button-readmore"><a href="{{ article.url }}">READ MORE</a></button>
     </div>
   </div>
 {%- endif -%}

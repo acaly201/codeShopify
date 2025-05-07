@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,9 +15,85 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "featured_product_MGkULU": {
+      "type": "featured-product",
+      "blocks": {
+        "text_4Kr4Kj": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "globo_product_option_app_block_3Eicwh": {
+          "type": "shopify://apps/globo-product-option/blocks/app-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
+          "settings": {}
+        },
+        "title_jmxB46": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_FJ38gH": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_wBqcig": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_RXxBzm": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_WpgB9t": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_8RT4NL": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_4Kr4Kj",
+        "globo_product_option_app_block_3Eicwh",
+        "title_jmxB46",
+        "price_FJ38gH",
+        "variant_picker_wBqcig",
+        "quantity_selector_RXxBzm",
+        "buy_buttons_WpgB9t",
+        "share_8RT4NL"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "van-trượt",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "featured_product_MGkULU"
   ]
 }

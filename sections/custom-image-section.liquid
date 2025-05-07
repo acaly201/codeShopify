@@ -1,0 +1,125 @@
+<style>
+    .custom-image-section {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      width:100%;
+      height:max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding:12% 0;
+      margin: {{ section.settings.margin_top }}px 0px {{ section.settings.margin_bottom }}px 0px;
+  }
+
+    .custom-text-image-section {
+      width: 100%;
+      height:max-content;
+      max-width: 1200px;
+      padding:20px 30px;
+      font-size: 60px;
+      font-weight: 400;
+      font-family: Poppins, sans-serif;
+      font-style: normal;
+      line-height: 1;
+      color:{{ section.settings.text_color }};
+    }
+
+
+    @media screen and (max-width: 460px){
+      .custom-text-image-section {
+        font-size: 25px !important;
+      }
+      .custom-image-section {
+      height:auto;
+    }
+    }
+</style>
+
+{%- if section.settings.background_image -%}
+  {%- liquid
+    assign image_url = section.settings.background_image | image_url: width: 3840
+  -%}
+
+  <section
+    class="custom-image-section lazy-background"
+    data-background-image="{{ image_url }}"
+    style="background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100px;"
+  >
+    <div class="custom-text-image-section">
+      {{ section.settings.heading_text | escape | newline_to_br }}
+    </div>
+  </section>
+
+{%- else -%}
+  <!-- Nếu không có background image, load ảnh mẫu -->
+  {%- assign placeholder_image = 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' -%}
+
+  <section
+    class="custom-image-section"
+    style="
+      background: url('https:{{ placeholder_image | split: 'src="' | last | split: '"' | first }}') center center no-repeat;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 100px;
+    "
+  >
+    <div class="custom-text-image-section">
+      {{ section.settings.heading_text | escape | newline_to_br }}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Custom image section",
+  "tag": "section",
+  "class": "banner-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Ảnh nền"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_text",
+      "label": "Tiêu đề",
+      "default": "Title"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom image section"
+    }
+  ]
+}
+{% endschema %}

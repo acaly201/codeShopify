@@ -21,3 +21,28 @@
   width: 52.5rem;
   height: 52.5rem;
 }
+
+.list-blogs {
+  width: 70%;
+  margin: auto;
+  height: max-content;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+.blog {
+  width: 45%;
+  border: 1px solid rgb(192, 185, 185);
+  padding: 10px;
+  background-color: rgb(229, 234, 232);
+}
+.title-blog {
+  color: rgb(44, 25, 214);
+  font-weight: 600;
+  text-align: center;
+}
+.blog:nth-child(even){
+  align-self: flex-end;
+}

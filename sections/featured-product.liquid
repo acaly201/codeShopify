@@ -93,11 +93,14 @@
             data-url="{{ product.url }}"
           >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
-                  {% render block %}
+                  {% form 'product', product, id: product_form_id %}
+                    {% render block, product: product %}
+                    <div id="globo-options-root" data-product-id="{{ product.id }}"></div>
+                  {% endform %}
+
                 {%- when 'text' -%}
                   <p
                     class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -105,6 +108,7 @@
                   >
                     {{- block.settings.text -}}
                   </p>
+
                 {%- when 'title' -%}
                   <h2 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
                     {%- unless placeholder -%}
@@ -289,7 +293,10 @@
                                   </dt>
                                   <dd>
                                     <span class="price-per-item--current">
-                                      {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                      {{-
+                                        'products.product.volume_pricing.price_at_each_html'
+                                        | t: price: variant_price
+                                      -}}
                                     </span>
                                   </dd>
                                 </dl>
@@ -374,6 +381,7 @@
                       </volume-pricing>
                     {%- endif -%}
                   </div>
+
                 {%- when 'share' -%}
                   {% liquid
                     assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
@@ -386,12 +394,15 @@
                     product_form_id: product_form_id
                   %}
                 {%- when 'buy_buttons' -%}
+                
                   {%- render 'buy-buttons',
                     block: block,
                     product: product,
                     product_form_id: product_form_id,
-                    section_id: section.id
+                    section_id: section.id,
+                    show_pickup_availability: true
                   -%}
+
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
                 {%- when 'rating' -%}
@@ -453,7 +464,10 @@
       {% render 'product-media-modal', product: product, variant_images: variant_images %}
     </div>
   </section>
-
+  <script>
+    window.Shopify = window.Shopify || {};
+    window.Shopify.product = {{ product | json }};
+  </script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- if section.settings.image_zoom == 'hover' -%}
     <script id="EnableZoomOnHover-featured" src="{{ 'magnify.js' | asset_url }}" defer="defer"></script>
@@ -486,7 +500,19 @@
     <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
   {% endif %}
 </product-info>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Đợi app JS load xong
+    var tryInit = setInterval(function () {
+      if (window.GLOBO_OPTIONS && typeof window.GLOBO_OPTIONS.init === 'function') {
+        clearInterval(tryInit);
 
+        // Gọi khởi tạo lại widget thủ công
+        window.GLOBO_OPTIONS.init();
+      }
+    }, 300);
+  });
+</script>
 {% schema %}
 {
   "name": "t:sections.featured-product.name",

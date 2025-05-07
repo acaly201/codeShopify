@@ -1,0 +1,229 @@
+{{ 'custom-slide-product.css' | asset_url | stylesheet_tag }}
+<style>
+  .custom-slide-productss {
+    width: 100%;
+    overflow-x: hidden;
+    height: max-content;
+    margin: {{ section.settings.margin_top }}px 0px {{ section.settings.margin_bottom }}px 0px;
+    
+  }
+  .swiper-custom .swiper-wrapper {
+    display: flex;
+   
+  }
+  .swiper-custom .swiper-slide {
+    grid-row: 0;
+   width:100%;
+    height: max-content;
+    overflow: hidden;
+  }
+</style>
+
+{% assign limit_check = section.settings.number_of_items_custom | round %}
+{% render 'custom-tab-cart' %}
+{% render 'custom-box-fixed' %}
+{% render 'custom-tab-view-product' %}
+{% render 'custom-tab-compare' %}
+
+<div class="custom-slide-productss">
+  <div class="swiper swiper-custom">
+    <div class="swiper-wrapper color-{{ section.settings.parent_box_color_scheme }}">
+      {% for product in collections.all.products limit: section.settings.number_of_items_custom %}
+        <div class="swiper-slide custom-slide-product color-{{ section.settings.menu_box_color_scheme }}">
+          {% render 'card-product',
+            showElementt: 'showElement',
+            addProduct: 'addProduct',
+            addCompare: 'addCompare',
+            card_product: product,
+            media_aspect_ratio: false,
+            image_shape: false,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_vendor: false,
+            show_rating: false,
+            skip_styles: false,
+            section_id: false,
+            quick_add: false
+          %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% if limit_check > 4 %}
+    <div class="swiper-pagination"></div>
+  {% endif %}
+</div>
+
+<script>
+ (function() {
+  // Hàm khởi tạo (và tái khởi tạo) Swiper cho một container cụ thể
+  function initSwiper(containerEl) {
+    if (!containerEl) return; // Nếu không có phần tử chứa Swiper, bỏ qua
+
+    // Nếu đã có Swiper instance trước đó, hủy nó để tránh trùng lặp và rò rỉ bộ nhớ
+    if (containerEl.swiperInstance) {
+      containerEl.swiperInstance.destroy(true, true);
+      containerEl.swiperInstance = null;
+    }
+
+    // Lấy giá trị cài đặt từ section (được gán qua Liquid)
+    const autoSlide = {{ section.settings.auto_slide | json }};
+    const numberItemSlide = {{ section.settings.number_items_slide }};
+    
+    // Tìm phần tử phân trang (nếu có) liên quan đến slider này
+    const paginationEl = containerEl.parentElement.querySelector('.swiper-pagination');
+
+    // Khởi tạo Swiper mới với các tùy chọn
+    containerEl.swiperInstance = new Swiper(containerEl, {
+      // Khoảng cách giữa các slide (px)
+      spaceBetween: 20,
+      // Không lặp vô tận, vô hiệu hóa nếu không có slide nào
+      loop: false,
+      // Nếu số slide ít hơn 1 màn hình, sẽ tự động vô hiệu hóa (watchOverflow)
+      watchOverflow: true,
+      // Cho phép thay đổi con trỏ khi di chuột vào slider
+      grabCursor: true,
+      // Tự động phân trang nếu phần tử phân trang có trong DOM
+      pagination: paginationEl ? {
+        el: paginationEl,
+        clickable: true
+      } : {},
+      // Cấu hình breakpoints cho responsive
+      breakpoints: {
+        // Màn hình >= 320px: hiển thị 1 slide/nhóm
+        320: {
+          slidesPerView: 1,
+          slidesPerGroup: 1
+        },
+        // Màn hình >= 768px: hiển thị 2 slide/nhóm
+        768: {
+          slidesPerView: 2,
+          slidesPerGroup: 2
+        },
+        // Màn hình >= 1024px: hiển thị số slide theo cài đặt của section
+        1024: {
+          slidesPerView: numberItemSlide,
+          slidesPerGroup: numberItemSlide
+        },
+        // Màn hình >= 1440px: tương tự 1024px (có thể tùy chỉnh khác nếu cần)
+        1440: {
+          slidesPerView: numberItemSlide,
+          slidesPerGroup: numberItemSlide
+        },
+        // Màn hình >= 1920px: tương tự 1024px
+        1920: {
+          slidesPerView: numberItemSlide,
+          slidesPerGroup: numberItemSlide
+        }
+      },
+      // Tự động chạy nếu được bật trong section settings
+      autoplay: autoSlide ? {
+        delay: 4000,           // Thời gian giữa các lần chuyển slide (ms)
+        disableOnInteraction: false // Không dừng autoplay khi người dùng thao tác
+      } : false,
+      // Cho phép Swiper tự động cập nhật layout khi DOM thay đổi (ví dụ: khi chỉnh sửa trong Theme Editor)
+      observer: true,
+      observeParents: true
+    });
+  }
+
+  // Khởi tạo Swiper cho tất cả container có class 'swiper-custom' trên trang
+  function initAllSwipers() {
+    const containers = document.querySelectorAll('.swiper-custom');
+    containers.forEach((el) => {
+      initSwiper(el);
+    });
+  }
+
+  // Sự kiện: khi trang web tải xong, khởi tạo Swiper lần đầu
+  document.addEventListener('DOMContentLoaded', function() {
+    initAllSwipers();
+  });
+
+  // Lắng nghe các sự kiện của Shopify Theme Editor để tái khởi tạo Swiper khi section được thêm/chọn/bỏ chọn
+  document.addEventListener('shopify:section:load', function(event) {
+    initSwiper(event.target.querySelector('.swiper-custom'));
+  });
+  document.addEventListener('shopify:section:select', function(event) {
+    initSwiper(event.target.querySelector('.swiper-custom'));
+  });
+  document.addEventListener('shopify:section:deselect', function(event) {
+    initSwiper(event.target.querySelector('.swiper-custom'));
+  });
+})();
+
+</script>
+
+{% schema %}
+{
+  "name": "Custom slide product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_slide",
+      "label": "Auto Slide",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "range",
+      "id": "number_of_items_custom",
+      "label": "Number of items-custom",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "number_items_slide",
+      "label": "Number item in slide",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "color_scheme",
+      "id": "parent_box_color_scheme",
+      "label": "Color box",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_box_color_scheme",
+      "label": "Color menu",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom slide product"
+    }
+  ]
+}
+{% endschema %}

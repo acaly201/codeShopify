@@ -1,0 +1,402 @@
+{{ 'custom-menu-drop.css' | asset_url | stylesheet_tag }}
+<style>
+    .custom-menu-dropdown {
+      width: 100%;
+      height: max-content;
+      display: flex;
+      position: relative;
+      padding:{{ section.settings.padding_top | times: 0.5 | round: 0 }}px 0px {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 0px;
+      margin-top:{{section.settings.margin_top | times: 0.5 | round: 0 }}px;
+      margin-bottom:{{section.settings.margin_bottom | times: 0.5 | round: 0 }}px;
+    }
+    
+      @media screen and (max-width: 1023px) {
+        .custom-menu-dropdown {
+        display:none;}
+      }
+</style>
+
+<div class="custom-menu-dropdown color-{{ section.settings.parent_box_color_scheme }} {% if section.settings.menu_position == "left" %}position-left {% elsif section.settings.menu_position == "center"%}position-center {% else %}position-right{% endif %}">
+  <ul class="custom-list-menuu color-{{ section.settings.menu_box_color_scheme }}">
+    {% for block in section.blocks %}
+      {% if block.type == 'custom_menu_item' %}
+        <li
+          class="custom-title-menu-itemm"
+          id="menu-{{ block.id }}"
+          style="{% if block.settings.type_menu_drop == 'three_menu_img' or block.settings.type_menu_drop == 'four_menu_img' %} position: static;{% endif %}"
+        >
+          <a
+            class="custom-link-menu {% if block.settings.show_menu_drop == false %}show-icon-menu-drop{% endif %}"
+            href="{{ block.settings.item_url }}"
+          >
+            {{ block.settings.item_name -}}
+          </a>
+          {% if block.settings.show_menu_drop == true %}
+            {% case block.settings.type_menu_drop %}
+              {% when 'one_menu' %}
+                <div
+                  class="menu-{{ block.settings.item_name }} custom-menu-drop custom-menu-drop1"
+                  style="{% if section.settings.menu_position == "right"%} right:0;{% else %}left:0;{% endif %}"
+                >
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% when 'three_menu' %}
+                <div
+                  class="menu-{{ block.settings.item_name }} custom-menu-drop  custom-menu-drop2"
+                  style="{% if section.settings.menu_position == "right"%} right:0;{% else %}left:0;{% endif %}"
+                >
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm1'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm2'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% when 'three_menu_img' %}
+                <div class="menu-{{ block.settings.item_name }} custom-menu-drop  custom-menu-drop3">
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm1'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm2'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <img
+                    src="https://globo-toro.myshopify.com/cdn/shop/files/banner-header_large.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  >
+                </div>
+              {% else %}
+                <div class="menu-{{ block.settings.item_name }} custom-menu-drop  custom-menu-drop4">
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm1'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm2'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for blockk in section.blocks %}
+                      {% if blockk.type == 'custom_menu_drop_itemm3'
+                        and blockk.settings.parent_id == block.settings.name_id
+                      %}
+                        <li>{{ blockk.settings.menu_drop_item_namee }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <img
+                    src="https://globo-toro.myshopify.com/cdn/shop/files/img-single-sidebar01_large.jpg"
+                    alt=""
+                    width="200px"
+                    height="300px"
+                  >
+                </div>
+            {% endcase %}
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const itemMenu = document.querySelectorAll('.custom-link-menu');
+    const currentPath = window.location.pathname;
+    itemMenu.forEach((e, index) => {
+      const href = e.getAttribute('href');
+      if (href === currentPath) {
+        e.classList.add('activeee');
+      }
+      e.addEventListener('click', () => {
+        itemMenu.forEach((btn) => btn.classList.remove('activeee'));
+        e.classList.add('activeee');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom menu dropdown",
+  "settings": [
+    {
+      "type": "select",
+      "id": "menu_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "center",
+      "label": "menu position"
+    },
+    {
+      "type": "color_scheme",
+      "id": "parent_box_color_scheme",
+      "label": "Color box",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_box_color_scheme",
+      "label": "Color menu",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "marin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "marin bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "padding top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "padding bottom",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom_menu_item",
+      "name": "menu_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_name",
+          "label": "Item Name"
+        },
+        {
+          "type": "text",
+          "id": "name_id",
+          "label": "Id Menu"
+        },
+        {
+          "type": "url",
+          "id": "item_url",
+          "label": "Item URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_menu_drop",
+          "label": "Menu dropdown",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "type_menu_drop",
+          "label": "Type Menu Drop",
+          "options": [
+            { "value": "one_menu", "label": "one_menu" },
+            { "value": "three_menu", "label": "three_menu" },
+            { "value": "three_menu_img", "label": "three_menu_img" },
+            { "value": "four_menu_img", "label": "four_menu_img" }
+          ],
+          "default": "one_menu"
+        }
+      ]
+    },
+    {
+      "type": "custom_menu_drop_itemm",
+      "name": "custom_menu_drop_itemm",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_id",
+          "label": "Parent menu block ID",
+          "info": "Nhập id của menu cha"
+        },
+        {
+          "type": "text",
+          "id": "menu_drop_item_namee",
+          "label": "Item menu drop"
+        },
+        {
+          "type": "url",
+          "id": "menu_drop_item_url",
+          "label": "URL item menu drop"
+        }
+      ]
+    },
+    {
+      "type": "custom_menu_drop_itemm1",
+      "name": "custom_menu_drop_itemm1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_id",
+          "label": "Parent menu block ID",
+          "info": "Nhập id của menu cha"
+        },
+        {
+          "type": "text",
+          "id": "menu_drop_item_namee",
+          "label": "Item menu drop"
+        },
+        {
+          "type": "url",
+          "id": "menu_drop_item_url",
+          "label": "URL item menu drop"
+        }
+      ]
+    },
+    {
+      "type": "custom_menu_drop_itemm2",
+      "name": "custom_menu_drop_itemm2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_id",
+          "label": "Parent menu block ID",
+          "info": "Nhập id của menu cha"
+        },
+        {
+          "type": "text",
+          "id": "menu_drop_item_namee",
+          "label": "Item menu drop"
+        },
+        {
+          "type": "url",
+          "id": "menu_drop_item_url",
+          "label": "URL item menu drop"
+        }
+      ]
+    },
+    {
+      "type": "custom_menu_drop_itemm3",
+      "name": "custom_menu_drop_itemm3",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_id",
+          "label": "Parent menu block ID",
+          "info": "Nhập id của menu cha"
+        },
+        {
+          "type": "text",
+          "id": "menu_drop_item_namee",
+          "label": "Item menu drop"
+        },
+        {
+          "type": "url",
+          "id": "menu_drop_item_url",
+          "label": "URL item menu drop"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dropdown Menu Builder"
+    }
+  ]
+}
+{% endschema %}

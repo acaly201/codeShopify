@@ -1,0 +1,91 @@
+.box-slide {
+  width: 100%;
+  overflow: hidden;
+}
+.hover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: 1;
+  opacity: 0.5;
+  visibility: hidden;
+}
+.slide-item:hover .hover {
+  visibility: visible;
+}
+.slide-item img {
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.slide-item:hover img {
+  transition: 0.5s;
+  transform: scale(1);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.dots {
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.dots .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.dots .dot.active {
+  background: red;
+}
+.slide-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.slide-item:hover::before {
+  animation: shine-move 0.75s ease forwards;
+}
+
+@keyframes shine-move {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+.lazy-image {
+  width: 100%;
+  height: auto; /* giữ đúng tỷ lệ ảnh */
+  display: block; /* bỏ khoảng trắng dưới ảnh */
+  object-fit: cover; /* nếu bạn muốn crop ảnh đẹp hơn */
+}

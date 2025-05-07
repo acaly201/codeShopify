@@ -1,0 +1,127 @@
+.box {
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+}
+.snipper-slide-product {
+    display:flex;
+    width:max-content;
+    height:max-content;
+    justify-content: space-between;
+    transition: transform 1s ease;
+    -webkit-transition: transform 1s ease;
+    -moz-transition: transform 1s ease;
+    -ms-transition: transform 1s ease;
+    -o-transition: transform 1s ease;
+    gap: 20px;
+}
+.box-product {
+    width:26vw;
+    height:30vh;
+    overflow: hidden;
+    position: relative;
+   cursor: pointer;
+  
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    padding: 0 15%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.content h2 {
+    font-size:2rem;
+    color: white;
+}
+.box-product::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    z-index: 101;
+    pointer-events: none;
+  }
+  
+  .box-product:hover::before {
+    animation: shine-move 0.75s ease forwards;
+  }
+  
+  @keyframes shine-move {
+    0% {
+      left: -75%;
+    }
+    100% {
+      left: 125%;
+    }
+  }
+.animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 99;
+    opacity: 0.5;
+    visibility: hidden;
+}
+.box-product:hover .animation {
+    visibility: visible;
+}
+.box-product img {
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.box-product:hover img {
+    transition: 0.5s;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.show-slide {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+    cursor: pointer;
+}
+.show-slide div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: rgb(175, 173, 170);
+}
+.active {
+    background-color: red !important;
+}

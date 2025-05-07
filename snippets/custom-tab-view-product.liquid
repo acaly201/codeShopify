@@ -1,0 +1,70 @@
+<div class="custom-view-productt">
+  <div class="customm-img">
+    <button class="prev-slide">&lt;</button>
+    <div class="slide-imgggg">
+      <img
+        class="imggg1"
+        src=""
+        width="100%"
+        height="100%"
+        alt="abc"
+
+      ><img
+        class="imggg2"
+        src=""
+        width="100%"
+        height="100%"
+        alt="abc"
+      >
+    </div>
+    <button class="next-slide">&gt;</button>
+  </div>
+
+  <div class="customm-content-view-product">
+    <span class="customm-title"></span>
+    <span class="customm-price">$69.00</span>
+    <p class="customm-content">
+      Donec venenatis tellus ut nisl rutrum luctus. Quisque euismod rutrum nibh, vel euismod augue iaculis eget. Orci
+      varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce magna...
+    </p>
+    <div class="customm-byy">
+      <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+        <button  class="quantity__button" name="minus" type="button">
+          <span class="svg-wrapper">
+            {{- 'icon-minus.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <input
+          class="quantity__input"
+          type="number"
+          name="quantity"
+          id="Quantity-{{ section.id }}"
+          data-cart-quantity="{{ cart }}"
+          data-min=""
+          min="1"
+          data-max=""
+          max=""
+          step=""
+          value="1"
+          form="{{ product_form_id }}"
+        >
+        <button class="quantity__button" name="plus" type="button">
+          <span class="svg-wrapper">
+            {{- 'icon-plus.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </quantity-input>
+      <div class="customm-add-cart" data-variant=''>Add to cart</div>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-arrows-left-right"></i>
+    </div>
+    <span class="customm-categori">Categories: All,Men,Sandals,Women</span>
+    <span class="customm-tags">Tags: $60.00 - $80.00,Hot</span>
+    <h5 class="customm-share">Share with</h5>
+    <div class="customm-icons">
+      <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i>
+      <i class="fab fa-google-plus-g"></i>
+      <i class="fab fa-pinterest-p"></i>
+    </div>
+  </div>
+</div>

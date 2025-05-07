@@ -4,11 +4,135 @@
   Usage:
   {% render 'header-dropdown-menu' %}
 {% endcomment %}
-
-<nav class="header__inline-menu">
+{{ 'custom-menu-bar.css' | asset_url | stylesheet_tag }}
+<nav style="display:none" class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
-      <li>
+      <li class="li-menu-custom">
+       {% if link.title == 'HOME' %}
+          <div class="menu-bar-home-custom">
+            <ul>
+              <li>FANSHION 01</li>
+              <li>Home 01</li>
+              <li>Home 02</li>
+              <li>Home 03</li>
+              <li>Home 04</li>
+              <li>Home 05</li>
+              <li>Home 06</li>
+            </ul>
+            <ul>
+              <li>FANSHION 02</li>
+              <li>Home 07</li>
+              <li>Home 08</li>
+              <li>Home 09</li>
+              <li>Home 10</li>
+              <li>Home 11</li>
+              <li>Home 12</li>
+            </ul>
+            <ul>
+              <li>FANSHION 03</li>
+              <li>Home 13</li>
+              <li>Home 14</li>
+              <li>Home 15</li>
+              <li>Home 16</li>
+              <li>Home 17</li>
+              <li>Home 18</li>
+            </ul>
+          </div>
+        {% endif %}
+        {% if link.title == 'PRODUCTS' %}
+          <div class="menu-bar-home-custom">
+            <ul>
+              <li>PRODUCT PAGE</li>
+              <li>Product Simple 01</li>
+              <li>Product Simple 02</li>
+              <li>Product Simple 03</li>
+              <li>Product Simple 04</li>
+            </ul>
+            <ul>
+              <li>PRODUCT PAGE</li>
+              <li>Product Simple 05</li>
+              <li>Product Simple 06</li>
+              <li>Product Simple 07</li>
+              <li>Product Simple 08</li>
+            </ul>
+            <ul>
+              <li>COMMUNITY</li>
+              <li>Community</li>
+              <li>facebook ground</li>
+              <li>Forums</li>
+              <li>Meetups</li>
+            </ul>
+            <ul>
+              <li>COMPANY</li>
+              <li>Beuty</li>
+              <li>Fansion</li>
+              <li>Globo</li>
+              <li>Lift style</li>
+            </ul>
+            <img
+              src="https://globo-toro.myshopify.com/cdn/shop/files/img-single-sidebar01_large.jpg"
+              alt=""
+              width="200px"
+              height="300px"
+            >
+          </div>
+        {% endif %}
+        {% if link.title == 'SHOP' %}
+          <div class="menu-bar-home-custom">
+            <ul>
+              <li>PRODUCT PAGE</li>
+              <li>Product Simple 01</li>
+              <li>Product Simple 02</li>
+              <li>Product Simple 03</li>
+              <li>Product Simple 04</li>
+            </ul>
+            <ul>
+              <li>PRODUCT PAGE</li>
+              <li>Product Simple 05</li>
+              <li>Product Simple 06</li>
+              <li>Product Simple 07</li>
+              <li>Product Simple 08</li>
+            </ul>
+            <ul>
+              <li>COMMUNITY</li>
+              <li>Community</li>
+              <li>facebook ground</li>
+              <li>Forums</li>
+              <li>Meetups</li>
+            </ul>
+            <img
+              src="https://globo-toro.myshopify.com/cdn/shop/files/banner-header_large.jpg"
+              alt=""
+              width="200px"
+              height="300px"
+            >
+          </div>
+        {% endif %}
+        {% if link.title == 'PAGE' %}
+          <div class="menu-bar-home-custom">
+            <ul>
+              <li>About</li>
+              <li>Contact us</li>
+              <li>Faqs</li>
+              <li>Galarry</li>
+              <li>Outtems</li>
+              <li>Whinlist</li>
+            </ul>
+          </div>
+        {% endif %}
+        {% if link.title == 'BLOG' %}
+          <div class="menu-bar-home-custom">
+            <ul>
+              <li>Blog No Sidebar</li>
+              <li>Blog Left Sidebar</li>
+              <li>Blog Right Sidebar</li>
+              <li>Blog Grid</li>
+              <li>Blog Masonry</li>
+              <li>Single Post 01</li>
+            </ul>
+          </div>
+        {% endif %}
         {%- if link.links != blank -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
